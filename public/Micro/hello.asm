@@ -21,10 +21,3 @@ ARRAY DCD 0X23,0X45,0XFF,0X76,0X12,0X99
 
 END
 
-;| Comparison | Current Largest (R2) | Next Element (R4) | Result   |
-;| ---------- | -------------------- | ----------------- | -------- |
-;| Initial    | 23H                  | 45H               | R2 = 45H |
-;| 45H vs FFH | 45H                  | FFH               | R2 = FFH |
-;| FFH vs 76H | FFH                  | 76H               | R2 = FFH |
-;| FFH vs 12H | FFH                  | 12H               | R2 = FFH |
-;| FFH vs 99H | FFH                  | 99H               | R2 = FFH |
