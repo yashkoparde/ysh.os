@@ -1,22 +1,16 @@
-//ALP C prog in Keil to find Factorial
+//Factorial of Number
 #include <lpc214x.h>
+
 int main(void)
 {
-    volatile int i, j, temp;
-    int arr[] = {4,1,3,5,2};
-
-    for(i = 1; i < 5; i++)
+    volatile int i, n;
+    int fact = 1;
+    n = 5;                      // Initialize number
+    for (i = 1; i <= n; i++)
     {
-        for(j = 0; j < 5 - i; j++)
-        {
-            if(arr[j] > arr[j + 1])
-            {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
+        fact = fact * i;        // Compute factorial
     }
+    while (1);                  // Infinite loop
 
-    while(1);
+    return 0;
 }
