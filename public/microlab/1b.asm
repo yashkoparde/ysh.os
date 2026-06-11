@@ -1,23 +1,27 @@
 ;ALP for Arithmetic Operations
-AREA register, CODE, READONLY
-ENTRY
+        AREA    register, CODE, READONLY
+        ENTRY
 
-MOV R1,#0X00F0
+        MOV     R1, #0x00F0
 
-ADD  R0,R1,#0XFFFFFF4F
-ADDS R2,R1,#0XFFFFFF4F
-ADCS R3,R1,R2
+        ADD     R0, R1, #0xFFFFFF4F      ; R0 = R1 + 0xFFFFFF4F
 
-ADD R4,R1,R1,LSL #1
+        ADDS    R2, R1, #0xFFFFFF4F      ; R2 = R1 + 0xFFFFFF4F, flags updated
 
-MOV R5,#0X00F0
+        ADCS    R3, R1, R2               ; R3 = R1 + R2 + Carry, flags updated
 
-SUB  R6,R5,#0X0F0
-SUBS R7,R5,#0X0F0
-SBCS R8,R5,R6
+        ADD     R4, R1, R1, LSL #1       ; R4 = 3 × R1
 
-SUBS R9,R1,R1,LSL #1
+        MOV     R5, #0x00F0
 
-STOP B STOP
+        SUB     R6, R5, #0x0F0           ; R6 = R5 - 0x0F0
 
-END
+        SUBS    R7, R5, #0x0F0           ; R7 = R5 - 0x0F0, flags updated
+
+        SBCS    R8, R5, R6               ; R8 = R5 - R6 - !Carry, flags updated
+
+        SUBS    R9, R1, R1, LSL #1       ; R9 = R1 - 2×R1, result negative
+
+STOP    B       STOP
+
+        END
